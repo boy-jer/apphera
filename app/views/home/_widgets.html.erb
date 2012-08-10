@@ -1,0 +1,81 @@
+<% if @aggregate %>
+    <div class="row">
+      <div class="span3">
+        <h3>Überblick</h3></div>
+    </div> <br/>
+
+    <div class="row">
+
+      <div class="span3">
+        <div class="well">
+          <h4>Facebook (84/100)</h4>
+
+          <div class="progress progress-striped progress-success active">
+            <div class="bar"
+                 style="width: 84%;"></div>
+          </div>
+          <h4>Twitter (50/100)</h4>
+
+          <div class="progress progress-striped progress-warning active">
+            <div class="bar"
+                 style="width: 50%;"></div>
+          </div>
+          <h4>Foursquare (78/100)</h4>
+
+          <div class="progress progress-striped progress-success active">
+            <div class="bar"
+                 style="width: 78%;"></div>
+          </div>
+          <h4>YouTube (20/100)</h4>
+
+          <div class="progress progress-striped progress-danger active">
+            <div class="bar"
+                 style="width: 20%;"></div>
+          </div>
+
+
+          <!-- content -->
+
+
+        </div>
+      </div>
+      <div class="row">
+
+        <div class="span3">
+          <div class="well">
+            <h4>Bewertungen (<%= @aggregate.review_avg || 0 %>/5.00) </h4>
+            <% if @aggregate.review_avg <= 2 %>
+                <div class="progress progress-striped progress-danger active">
+            <% elsif @aggregate.review_avg >= 2.1 && @aggregate.review_avg <= 3.5 %>
+                <div class="progress progress-striped progress-warning active">
+            <% else %>
+                <div class="progress progress-striped progress-success active">
+
+            <% end %>
+            <div class="bar"
+                 style="width:<%= @aggregate.review_avg/5*100 %>%;"></div>
+            </div>
+            </div>
+            </div>
+
+            <div class="span3">
+              <div class="well">
+
+                <h4>Website Verfügbarkeit (100/100)</h4>
+
+                <div class="progress progress-striped progress-success active">
+                  <div class="bar"
+                       style="width: 100%;"></div>
+                </div>
+                <h4>Website Geschwindigkeit (60/100)</h4>
+
+                <div class="progress progress-striped progress-warning active">
+                  <div class="bar"
+                       style="width: 60%;"></div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+<% end %>

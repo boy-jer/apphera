@@ -1,0 +1,185 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Appheradashboard</title>
+  <meta name="description" content="">
+  <meta name="author" content="Nikolai Manek, Apphera">
+  <%= stylesheet_link_tag "application" %>
+  <%= stylesheet_link_tag "gmaps4rails" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+  <style type="text/css">
+      body {
+          padding-top: 40px;
+      }
+  </style>
+  <noscript>
+    <h1>This page needs JavaScript activated to work - Diese Seite funktioniert nur in modernen Browsern mit aktiviertem
+      JavaScript</h1>
+    <style>div {
+        display: none;
+    }</style>
+  </noscript>
+  <!-- Le fav and touch icons -->
+
+  <!-- <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png"> -->
+  <script type="text/javascript">
+
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-31409808-1']);
+      _gaq.push(['_trackPageview']);
+
+      (function () {
+          var ga = document.createElement('script');
+          ga.type = 'text/javascript';
+          ga.async = true;
+          ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+          var s = document.getElementsByTagName('script')[0];
+          s.parentNode.insertBefore(ga, s);
+      })();
+
+  </script>
+</head>
+<div class="navbar navbar-fixed-top">
+  <div class="navbar-inner">
+    <div class='topbar'>
+    </div>
+    <div class='header'>
+      <div class='container'>
+        <a class='brand' href='/' title='Market Intelligence'>
+          <img src="/assets/apphera2.png" width="90" height="25" alt="Apphera">
+        </a>
+
+
+        <ul class='nav'>
+
+          <li>
+            <a class='' href='/'>
+              <i class="icon-home icon-white"></i>
+              Home
+            </a>
+          </li>
+
+          <% if current_user %>
+              <%= render :partial => 'layouts/customer' %>
+          <% end %>
+
+          <li class="dropdown" id="menu2">
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#menu2">
+              <i class="icon-user icon-white"></i>
+              Bewertungstracking
+              <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+              <li><a href="/reviews">Bewertungen</a></li>
+              <li><a href="/reviewers">Meinungsmacher</a></li>
+            </ul>
+          </li>
+
+          <li>
+            <a class='' href='/keywords'>
+              <i class="icon-search icon-white"></i>
+              Keywords
+            </a>
+          </li>
+
+          <li class="dropdown" id="competitors">
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#competitors">
+              <i class="icon-list icon-white"></i>
+              Mitbewerber
+              <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+              <li><a href="/organizations">Tabelle</a></li>
+              <li><a href="/organizations/mapview">Karte</a></li>
+            </ul>
+          </li>
+
+
+          <li class="dropdown" id="menu1">
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#menu1">
+              <i class="icon-zoom-in icon-white"></i>
+
+              Auswertungen
+              <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+              <li><a href="/aggregate_results">Vergleich</a></li>
+              <!-- <li><a href="#">Listings</a></li>
+                                              <li class="divider"></li>
+                                              <li><a href="#">Charts</a></li> -->
+            </ul>
+          </li>
+
+
+          <li>
+            <div class="btn btn-success">
+              <%= render 'shared/navigation' %>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+<body>
+<div class='container'>
+  <br/>
+
+  <div class="well">
+    <% begin %>
+        <% if @org and current_user %>
+            <div class="input-append">
+              <%= form_for @org, :url => setscope_path do |f| %>
+                  <%= f.collection_select :id, @myorgs.order(:name), :id, :name, include_blank: false %>
+                  <%= f.submit "Organisation Auswählen", :class => 'btn btn-primary' %>
+              <% end %>
+        <% end %>
+    <% rescue %>
+    <% end %>
+
+    <% if current_user %>
+        <%= @org.name if @org %>  <%= @org.street if @org %> <%= @org.city if @org %>
+        -Nutzer: <%= current_user.name if current_user %>
+    <% end %>
+    </div></div>
+
+  <% [:notice, :error, :alert].each do |level| %>
+      <% unless flash[level].blank? %>
+          <div class="alert <%= flash_class(level) %>">
+            <a class="close" data-dismiss="alert" href="#">×</a>
+            <%= content_tag :p, flash[level] %>
+          </div>
+      <% end %>
+  <% end %>
+
+  <div class="mybox">
+
+    <div class="hero-unit">
+      <%= yield %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="span4"></div>
+    <div class="span4">
+      Copyright 2012 Apphera, Inc. - all rights reserved.<br/>
+      <!-- <a href="imprint">Imprint</a> | <a href="privacy">Privacy Policy</a> | <a href="terms">Terms of use</a></h6> -->
+    </div>
+    <div class="span4"></div>
+  </div>
+</div>
+<!--<a id="feeedbackbadge" href='/feedback' style='display:scroll;position:fixed;top:200px;right:0px;' target='_blank'><img src='/assets/badge_feedback.png' >-->
+<%= yield :scripts %>
+<script type="text/javascript">
+    $(".alert").alert()
+</script>
+</body>
+</html>

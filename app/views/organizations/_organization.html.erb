@@ -1,0 +1,24 @@
+<%= div_for organization do %>
+    <span class="dateandoptions">
+        <%= link_to '',organization, confirm: 'Are you sure?', method: :delete, :class => "icon-remove" %>
+<br />
+      Erstellung ist  <%=time_ago_in_words(organization.created_at)%> her<br />
+
+      <%= organization.reviews.count%> Bewertungen mit einem Durchschnitt von
+      <%= organization.aggregate_results.last.review_avg rescue nil%> <br />
+      <%= organization.category.name %>
+
+
+  </span>
+    <p><b><%= organization.name %></b></p>
+    <address>
+    <%= organization.street %> <br />
+    <%= organization.postalcode + " " + organization.city %>   <br />
+    <%= organization.phone1 %>  <br />
+    </address>
+    <a href="<%= organization.url %>"> <%=  organization.url %> </a>   <br />
+    <%= organization.facebook_urls.first.url rescue nil %>  <br />
+
+    <%= link_to '', edit_organization_path(organization), :class => "icon-edit"  %>
+
+<% end %>

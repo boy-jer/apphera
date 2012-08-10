@@ -1,0 +1,19 @@
+<h6>Sign in</h6>
+
+<div class="hero-unit">
+  <%= simple_form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
+      <p><%= f.label :email %>
+        <%= f.email_field :email, :class => "login" %></p>
+
+      <p><%= f.label :password %>
+        <%= f.password_field :password, :class => "login" %></p>
+
+      <% if devise_mapping.rememberable? -%>
+          <div><%= f.check_box :remember_me %> <%= f.label :remember_me %></div>
+      <% end -%>
+
+      <div><%= f.submit "Sign in", :class => "btn" %></div>
+  <% end %>
+
+  <%= render :partial => "devise/shared/links" %>
+</div>

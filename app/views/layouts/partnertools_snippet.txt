@@ -1,0 +1,21 @@
+ <% if current_user != nil %>
+               <% if current_user.reseller? %>
+                   <li class="dropdown" id="menu4">
+                     <a class="dropdown-toggle" data-toggle="dropdown" href="#menu4">
+                       <i class="icon-user icon-white"></i>
+                       Partner Tools
+                       <b class="caret"></b>
+                     </a>
+                     <ul class="dropdown-menu">
+                       <!-- <li><a href="/accounts">Users</a></li> -->
+                       <!-- <li><a href="/aggregate_results">User Konten</a></li>
+                     <li><a href="#">Rechte</a></li>
+                     <li><a href="#">Specials</a></li> -->
+                       <li class="divider"></li>
+                       <li><a href="/resellers">Accounts</a></li>
+                       <!-- <li><a href="/resellers/tips">Tip-Texte</a></li> -->
+                     </ul>
+                   </li>
+               <% end %>
+           <% end %>
+

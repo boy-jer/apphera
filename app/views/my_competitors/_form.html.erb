@@ -1,0 +1,18 @@
+<%= simple_form_for @new_organization do |f| %>
+
+        <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :name, :label => 'Firmen Name' %>
+    <%= f.input :street, :label => 'Strasse' %>
+    <%= f.input :zipcode, :label => 'Postleitzahl' %>
+    <%= f.input :city, :label => 'Stadt' %>
+    <%= f.input :phone, :label => 'Telefon' %>
+    <%= f.input :short_profile, :label => 'Kurze Beschreibung (z.B. Chinarestaurant)' %>
+  </div>
+
+    <div class="form-actions">
+      <%= f.submit 'Hinzufügen', :class => 'btn-primary' %>
+      <%= link_to 'Abbrechen', organizations_path, :class => 'btn' %>
+    </div>
+<% end %>

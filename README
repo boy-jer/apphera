@@ -1,0 +1,30 @@
+Appheradashboard - Apphera customer dashboard
+========================
+
+The dashboard serves ....
+
+
+Tools:
+
+http://js2coffee.org/ to translate all javascript to coffee
+
+IMPORTANT prerequisites:
+
+
+
+Signup Germany sequence
+
+1. Create user
+2. Create account 
+3. Create "Organizations" (which are basically the locations)
+4. Get competitors
+5. Get slugs for crawls (Qype etc.)
+6. 
+
+
+
+
+
+License:
+
+Copyright 2012, Apphera, Inc. & Nikolai Manek

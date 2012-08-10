@@ -1,0 +1,65 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<html>
+<head>
+  <title>Bewertungen von <%= @reviewer.name %></title>
+</head>
+<body>
+
+   <h4>Bewertungen von <%= @reviewer.name %></h4>   <hr />
+   <img src="<%= @reviewer.imageurl rescue nil%>" height="62" width="62" alt="<%= @reviewer.name rescue nil%>">
+<hr />
+   <a href="<%= @reviewer.slug rescue nil%>"><h4>Dieser Link führt zur persönlichen Seite des Users: <%= @reviewer.name rescue nil%></h4></a>
+
+<table class="table table">
+  <tr>
+    <th>
+      Lokation
+    </th>
+    <th>
+      Webseite
+    </th>
+
+    <th>
+      Review datum
+    </th>
+    <th>
+      Text
+    </th>
+    <th>
+      Bewertung
+    </th>
+  </tr>
+
+  <% unless @reviews.nil? %>
+      <% @reviews.each do |review| %>
+          <tr>
+            <td>
+           <h5>  <%= review.organization.name rescue nil%> </h5>
+            </td>
+            <td>
+              <img src="/assets/contentproviders/<%= @cps[review.content_provider_id.to_s.to_i].url %>.png" alt="<%= @cps[review.content_provider_id.to_s.to_i].name %>">
+            </td>
+
+            <td>
+              <%= review.review_date %>
+            </td>
+            <td>
+              <%= review.body %>
+            </td>
+            <td>
+              <%= review.rating %>
+            </td>
+          </tr>
+      <% end %>
+  <% end %>
+</table>
+
+<p>
+  <br>
+
+</p>
+   <%= link_to "Zurück", :back %>
+
+
+</body>
+</html>

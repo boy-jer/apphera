@@ -1,0 +1,30 @@
+<h1>Listing rankings</h1>
+
+<table>
+  <tr>
+    <th>Rank</th>
+    <th>Content provider</th>
+    <th>Keyword</th>
+    <th>Url</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+  <% unless @rankings.nil? %>
+      <% @rankings.each do |ranking| %>
+          <tr>
+            <td><%= ranking.rank %></td>
+            <td><%= ranking.content_provider.name %></td>
+            <td><%= ranking.name %></td>
+            <td><%= ranking.keyword.name %></td>
+            <td><%= ranking.url %></td>
+            <td><%= link_to 'Show', ranking %></td>
+            <td><%= link_to 'Edit', edit_ranking_path(ranking) %></td>
+            <td><%= link_to 'Entfernen', ranking, confirm: 'Sind Sie sicher das Sie den Suchbegriff entfernen moechten? ', method: :delete %></td>
+          </tr>
+      <% end %>
+  <% end %>
+
+</table>
+
+<br/>

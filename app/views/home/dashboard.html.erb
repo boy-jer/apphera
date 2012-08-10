@@ -1,0 +1,85 @@
+<div class="hero-unit">
+
+  <% if @org %>
+      <% if @org.id == 1604503 %>
+          <%= render :partial => 'widgets' %>
+      <% end %>
+      <br/>
+      <hr/>
+      <h3>Wichtige Benachrichtigungen f&uuml;r <%= @org.name %>, <%= @org.street %>, <%= @org.city %></h3>
+      <hr/>
+      <h4>Tests:</h4>
+      <table class="table table-striped">
+        <tr>
+          <th></th>
+          <th>Name</th>
+          <th>Erklärung</th>
+
+          <th></th>
+          <th></th>
+        </tr>
+
+        <% @tasks.each do |t| %>
+            <tr>
+              <td>
+                <% unless t.status.nil? %>
+                    <% case t.status %>
+                <% when 0 %>
+                        <span class="label label-info">Nicht getestet</span>
+                    <% when 1 %>
+                        <span class="label label-important">Nicht Komplett</span>
+                    <% when 2 %>
+                        <span class="label label-warning">Informiert</span>
+                    <% when 3 %>
+                        <span class="label label-important">In Bearbeitung</span>
+                    <% when 4 %>
+                        <span class="label label-success">Komplett!</span>
+                    <% else %>
+                    <% end %>
+                <% end %>
+
+
+              </td>
+              <% if t.status == 4 %>
+                  <td>
+                    <div class="gray"><%= t.task.task_translations.first.header %> </div>
+                  </td>
+                  <td>
+                    <div class="gray"><%= t.task.task_translations.first.body %></div>
+                  </td>
+              <% else %>
+                  <td><%= t.task.task_translations.first.header %></td>
+                  <td><%= t.task.task_translations.first.body %></td>
+              <% end %>
+              <!-- Workflow items for agency and enterprise solution-->
+              <!--<td>-->
+              <!--<div class="btn-group">-->
+              <!--<a class="btn btn-important dropdown-toggle" data-toggle="dropdown" href="#">Todo-->
+              <!--<span class="caret"></span></a>-->
+              <!--<ul class="dropdown-menu">-->
+              <!--<li><a href="#">Akzeptieren</a></li>-->
+              <!--<li><a href="#">Delegieren</a></li>-->
+              <!--<li><a href="#">Löschen</a></li>-->
+              <!--<li><a href="#">Bearbeiten</a></li>-->
+              <!--<li class="divider"></li>-->
+              <!--<li><a href="#">Wiedervorlage</a></li>-->
+              <!--</ul>-->
+              <!--</div>-->
+              <!-- /btn-group -->
+              <!-- </div> -->
+              <!--</td>-->
+
+            </tr>
+        <% end %>
+  <% else %>
+      <% if current_user.account.nil? %>
+          <h5>Sie muessen zuerst <a href="accounts/new"> Ihren Account Einrichten</a>
+      <% else %>
+          <h5>Sie muessen Ihrem Account zuerst
+            <a href="organizations/new"> eine oder mehrere Niederlassungen hinzuf&uuml;gen.</a></h5>
+      <% end %>
+  <% end %>
+  </table>
+
+  <br/>
+</div>

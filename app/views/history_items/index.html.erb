@@ -1,0 +1,26 @@
+<h3>Historie</h3>
+
+<table class = "table table-striped">
+  <tr>
+    <th>User</th>
+    <th>Beschreibung</th>
+    <th>Firma</th>
+    <th>Datum</th>
+    <th></th>
+  </tr>
+
+  <% @history_items.each do |history_item| %>
+      <tr>
+        <td><%= history_item.user.name %></td>
+        <td><%= history_item.description %></td>
+		<td><%= history_item.organization.name %></td>
+		<td><%= history_item.created_at %></td>
+		
+        
+      </tr>
+  <% end %>
+</table>
+
+<br/>
+<%= paginate @history_items%>
+

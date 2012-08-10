@@ -1,0 +1,95 @@
+<div class="hero-unit">
+  <h3>Auswertungen</h3>
+<!-- start tabs -->
+
+
+  <% unless @h.nil? %>
+      <%= high_chart("my_id", @h) %>
+  <% end %>
+  <a href="#" rel="popover" title="Überblick" data-content="Diese Grafik zeigt Ihnen die durschnittliche Reviewbewertung Ihrer Mitbewerber. Ihr eigener Durschnitt ist:
+<% unless @aggregate_result.nil? %>	
+<%= @aggregate_result.review_avg %>
+	">Erklärung der Grafik
+  </a>
+  <% end %>
+  <h3>Durchschnitt aller Mitbewerber Bewertungen :<%= @avg_rating.to_s %></h3>
+  <% unless @aggregate_result.nil? %>
+  <h3>Ihr Bewertungs-Durchschnitt :<%= @aggregate_result.review_avg %></h3>
+	<% end %>
+  <table class="table">
+
+    <tr>
+      <th>Lokation</th>
+      <th>Reviews</th>
+      <th>Review Durchschnitt</th>
+      <!-- <th>Tweets</th>
+           <th>Tweets neu</th>
+     	  <th>Followers<a href="#" rel="popover" title="Twitter Tip" data-content="Lorem ipsum"><i class="icon-list icon-question-sign"></i></a>	</th>
+     	  <th>Listed<a href="#" rel="popover" title="Twitter Tip" data-content="Lorem ipsum erm&ouml;glicht seinen Nutzern eine Lokation zu Empfehlen. Diese Empfehlungen nennen sich 'Foursquare Tip'"><i class="icon-list icon-question-sign"></i></a>	</th>
+           <th>Fb gefällt mir<a href="#" rel="popover" title="Facebook Tip" data-content="Lorem ipsum erm&ouml;glicht seinen Nutzern eine Lokation zu Empfehlen. Diese Empfehlungen nennen sich 'Foursquare Tip'"><i class="icon-list icon-question-sign"></i></a>	</th>
+           <th>Fb gefällt mir neu<a href="#" rel="popover" title="Facebook Tip" data-content="Lorem ipsum erm&ouml;glicht seinen Nutzern eine Lokation zu Empfehlen. Diese Empfehlungen nennen sich 'Foursquare Tip'"><i class="icon-list icon-question-sign"></i></a>	</th> -->
+	  <th>Foursquare Users</th>
+	<th>Foursquare Checkins</th>
+	<th>Foursquare Tip<a href="#" rel="popover" title="Foursquare Tip" data-content="Foursquare erm&ouml;glicht seinen Nutzern eine Lokation zu Empfehlen. Diese Empfehlungen nennen sich 'Foursquare Tip'. Wenn Sie viele Foursquare Nutzer in ihrer Lokation haben aber nicht als Tip gelistet sind, empfehlen wir Reviews genauer auszuwerten um herauszufinden warum die Nutzer ihre Lokation nicht empfehlen."><i class="icon-list icon-question-sign"></i></a>	</th>
+      <!--&lt;!&ndash; <th>Mentions</th>-->
+ <!--  <th>Mentions neu</th>
+   <th>Blog Beiträge</th>
+   <th>Blog Beiträge neu</th> -->
+
+    </tr>
+
+
+    <tr>
+      <% unless @aggregate_result.nil? %>
+          <td><%= @aggregate_result.organization.name %></td>
+          <td><%= @aggregate_result.reviews %></td>
+          <td><%= @aggregate_result.review_avg %></td>
+		  <td><%= @aggregate_result.fs_users_count%>
+			  <td><%= @aggregate_result.fs_checkins_count%>
+				  <td><%= @aggregate_result.fs_tip_count%>
+			
+
+     
+      <% end %>
+
+    </tr>
+
+  </table>
+
+  <br/>
+  </div>
+<h3>Mitbewerber Ergebnisse</h3>
+
+<table class="table table-striped table-bordered">
+  <tr>
+    <th>Lokation</th>
+
+    <th>Reviews</th>
+    <th>Review Durchschnitt</th>
+
+  </tr>
+  <% unless @aggregate_results2.nil? %>
+      <% @aggregate_results2.each do |aggregate_result2| %>
+          <tr>
+            <td> <a href="/reviews/<%= aggregate_result2.organization.id %>"><%= aggregate_result2.organization.name %></a></td>
+            <td><%= aggregate_result2.reviews %></td>
+            <td><%= aggregate_result2.review_avg %></td>
+			
+
+
+      <% end %>
+      </tr>
+  <% end %>
+</table>
+</div>
+
+
+<br/>
+<script type="text/javascript">
+    $("a[rel=popover]")
+            .popover()
+            .click(function (e) {
+                e.preventDefault()
+            })
+</script>
+

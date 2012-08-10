@@ -1,0 +1,27 @@
+development:
+  adapter: mysql2
+  encoding: utf8
+  database: apphera_community_development
+  pool: 5
+  username: root
+  password:
+  host: 127.0.0.1
+
+production:
+  adapter: mysql2
+  encoding: utf8
+  database: apphera_community_production
+  pool: 25
+  username: root
+  password:
+  host: 127.0.0.1
+
+test:
+  adapter: mysql2
+  encoding: utf8
+  database: apphera_community_test
+  pool: 5
+  username: root
+  password:
+  socket: /tmp/mysql.sock
+

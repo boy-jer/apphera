@@ -1,0 +1,37 @@
+<div class="well">
+  <h3>Mein Account</h3>
+  <address>
+    <p>
+      <b>Firma:</b>
+      <%= @account.name %>
+    </p>
+
+    <p>
+      <b>Vorname:</b>
+      <%= @account.firstname %>
+    </p>
+
+    <p>
+      <b>Nachname:</b>
+      <%= @account.lastname %>
+    </p>
+
+    <p>
+      <b>Telefon:</b>
+      <%= @account.phone %>
+    </p>
+  </address>
+  <%= link_to 'Edit', edit_account_path(@account), :class => "btn" %>
+</div>
+
+
+<h4>Meine Niederlassungen/Filialen</h4>
+
+  <div id="comments">
+    <%= render :partial => @organizations, :locals => { :list => true } %>
+  </div>
+
+
+<br/>
+
+<%= link_to 'Filiale hinzufügen', new_organization_path, :class => "btn" %>

@@ -1,0 +1,23 @@
+
+
+<% unless @h.nil? %>
+      <%= high_chart("my_id", @h) %>
+  <% end %>
+<table>
+  <tr>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @uptime_monitors.each do |uptime_monitor| %>
+  <tr>
+    <td><%= uptime_monitor.load_time %></td>
+    <td><%= uptime_monitor.time_stamp %></td>
+    <td><%= uptime_monitor.organization_id %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+

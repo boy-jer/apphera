@@ -1,0 +1,24 @@
+<h3>Bisher gefundene Links</h3>
+
+<style>
+ table { table-layout: fixed; }
+ table th, table td { overflow: hidden; }
+</style>
+<table class="table table-striped">
+  <tr>
+    <th>Titel</th>
+    <th>Link</th>
+    <th>Beschreibung</th>
+  </tr>
+  <% @links.each do |link| %>
+      <tr>
+
+        <td><%= link.title %></td>
+        <td><%= link.url %></td>
+        <td><%= link.description %></td>
+        
+      </tr>
+  <% end %>
+</table>
+<br/>
+

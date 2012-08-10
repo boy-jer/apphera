@@ -1,0 +1,25 @@
+<% if @organization %>
+
+<%= tag("div", :data => @cats) %>
+
+<%= simple_form_for(@organization) do |f| %>
+  
+ <%= f.input :name %>
+ <%= f.input :street, :label => "Strasse und Hausnummer" %>
+ <%= f.input :street2, :label => "Strassen Zusatz" %>
+ <%= f.input :postalcode, :label => "Postleitzahl" %>
+ <%= f.input :city, :label => "Stadt" %>
+ <%= f.input :phone1, :label => "Telefon" %>
+ <%= f.input :phone2, :label => "Mobil" %>
+ <%=  f.label "Branche" %>
+ <%= f.collection_select :category_id, @categories, :id, :name, include_blank: true %>
+ <%= f.input :url, :label => "Web Url" %>
+ <%= f.input :facebook, :placeholder => 'z.B. www.facebook.com/Firma', :label => "Geschäfts-Facebook Page"  %>
+        <%= f.input :twitter,:placeholder => 'z.B. twitter.com/meineFirma', :label => "Twitter Addresse" %>
+ <%= f.button :submit, :caption => "Abspeichern"%>
+<% end %>
+<% end %>
+ 
+
+
+   

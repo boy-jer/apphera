@@ -1,0 +1,11 @@
+# Sample localization file for English. Add more files in this directory for other locales.
+# See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
+
+en:
+  hello: "Hello world"
+  please_add_location: "Please add a location"
+  account_change_success: "You have changed the account successfully"
+  account_create_success: "Your account has been added successfully, please add locations now."
+  keyword_create_success: "Keyword was successfully created."
+  organization_create_success: "Your location has been successfully added"
+  unknown_keyword: "This keyword does not belong to this location"

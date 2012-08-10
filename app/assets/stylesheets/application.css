@@ -1,0 +1,62 @@
+/*
+ * This is a manifest file that'll automatically include all the stylesheets available in this directory
+ * and any sub-directories. You're free to add application-wide styles to this file and they'll appear at
+ * the top of the compiled file, but it's generally better to create a new file per style scope.
+ *= require_self
+ *= require scaffolds
+ *= require bootstrap_and_overrides
+ *= require kendo/kendo.common.min
+ *= require kendo/kendo.default.min
+ *= require kendo.metro.min
+ *= require gmaps4rails
+ *= require_tree .
+
+ 
+*/
+/*header nav ul {
+  list-style: none;
+  margin: 0 0 2em;
+  padding: 0;
+}
+header nav ul li {
+  display: inline;
+}
+#flash_notice, #flash_alert {
+  padding: 5px 8px;
+  margin: 10px 0;
+}
+#flash_notice {
+  background-color: #CFC;
+  border: solid 1px #6C6;
+}
+#flash_alert {
+  background-color: #FCC;
+  border: solid 1px #C66;
+}
+
+*/
+.mywhitebox {
+-moz-box-shadow: 0 0 5px 5px #FFF;
+-webkit-box-shadow: 0 0 5px 5px#FFF;
+box-shadow: 0 0 5px 5px #FFF;
+}
+.mybox {
+-moz-box-shadow: 0 0 5px 5px #888;
+-webkit-box-shadow: 0 0 5px 5px#888;
+box-shadow: 0 0 5px 5px #888;
+}
+.green{
+	color: green;
+}
+.gray{
+	color: gray;
+}
+.red{
+	color: red;
+	
+}
+.oversize input-text{
+    color: red;
+    height: 50px;
+    font-size: 34px;
+}

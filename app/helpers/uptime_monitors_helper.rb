@@ -1,0 +1,2 @@
+module UptimeMonitorsHelper
+end

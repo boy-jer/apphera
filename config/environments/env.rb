@@ -1,0 +1,1 @@
+# config.action_mailer.deliver_method = mailer

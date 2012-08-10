@@ -1,0 +1,41 @@
+<%= form_for(@account) do |f| %>
+    <% if @account.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@account.errors.count, "error") %> prohibited this account from being saved:</h2>
+
+          <ul>
+            <% @account.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+
+    <div class="field">
+      Firma
+      <br/>
+      <%= f.text_field :name %>
+    </div>
+    <h3>Ansprechpartner</h3>
+    <div class="field">
+      Vorname
+      <br/>
+      <%= f.text_field :firstname %>
+    </div>
+
+    <div class="field">
+     Nachname
+      <br/>
+      <%= f.text_field :lastname %>
+    </div>
+    </legend>
+    <div class="field">
+      <%= f.label :phone %>
+      <br/>
+      <%= f.text_field :phone %>
+    </div>
+    <div class="actions">
+      <%= f.submit 'Speichern', :class => 'btn-primary' %>
+    </div>
+<% end %>
+
