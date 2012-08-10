@@ -46,10 +46,17 @@ Now you should be able to start the application on the command line via:
 
 Over the next days we will add missing crawler modules etc. which we are preparing now.  Parts of the methods work by connecting to our API right now which happens transparent without any intervention, signup or other actions by you. Stay tuned for more over the next few days!
 
+## Licensing
 
-  
+Apphera is distributed under a dual license: an open source license, and a commercial license. The open source license under which Apphera is distributed is the GNU Public License version 2 (GPLv2). The GPL is the world's most popular open source software license, currently used by nearly 50% of all open source software, including such software as the Linux operating system kernel, the Firefox web browser, and the MySQL relational database management system.   
 
+For many users, the GPLv2 license suits their use of Apphera completely. These users are not distributing proprietary modifications, additions to, or derivatives of Apphera and they do not require the legal protections of a commercial license.  
 
+For other users, the GPLv2 does not suit their use of Apphera. These users wish to use Apphera in ways, products, markets or have other requirements that are not compatible with the GPLv2. To satisfy these demands, Apphera, as the worldwide exclusive licensor of Apphera, offers commercial licensing of Apphera.  
+
+A commercial license to Apphera provides customers the legal means both to modify Apphera and to incorporate it into a product, without the obligation of providing the resulting code under the GPLv2 license. License fees are priced competitively and offer tremendous value for the capabilities delivered. Fees vary depending on the application and the scale of its use. For more information about software licensing, please contact the Apphera Sales department.  
+
+Apphera remains the premier open source social media monitoring and engagement project and development for both Apphera and its components follows the open source model. Apphera provides ongoing commitment and contributions to open source. Apphera's commercial licensing option provides customers with the best possible choice - the innovation and creativity of the open source model, and the protections and flexibility available with traditional, commercial software.  
 
 ## Contributing
 
