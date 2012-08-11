@@ -9,7 +9,7 @@ class Review < ActiveRecord::Base
   validates_uniqueness_of :review_provider_id
   validates :organization_id, :presence => true
   Tire.configure do
-    url "204.236.217.91:9200"
+    url "127.0.0.1:9200"
   end
   # define_index do
   #     indexes body

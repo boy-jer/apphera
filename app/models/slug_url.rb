@@ -11,7 +11,7 @@ class SlugUrl < ActiveRecord::Base
   include Tire::Model::Callbacks
   #
   Tire.configure do
-    url "204.236.217.91:9200"
+    url "127.0.0.1:9200"
   end
   mapping do
     indexes :id, :index => :not_analyzed

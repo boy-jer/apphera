@@ -5,7 +5,7 @@ class Tweet < ActiveRecord::Base
   validates_uniqueness_of :tweet_id
   
   Tire.configure do
-      url "204.236.217.91:9200"
+      url "127.0.0.1:9200"
     end
   
   def self.paginate(options = {})

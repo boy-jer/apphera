@@ -24,6 +24,8 @@ Apphera::Application.routes.draw do
   resources :accounts
 
   resources :rankings
+  
+  resources :fake_queue
 
   resources :keywords
 
