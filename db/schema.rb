@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120809060415) do
+ActiveRecord::Schema.define(:version => 20120812071454) do
 
   create_table "account_types", :force => true do |t|
     t.string   "name"
@@ -698,6 +698,25 @@ ActiveRecord::Schema.define(:version => 20120809060415) do
   add_index "slug_urls", ["content_provider_id"], :name => "index_slug_urls_on_content_provider_id"
   add_index "slug_urls", ["slug"], :name => "index_slug_urls_on_slug"
 
+  create_table "system_settings", :force => true do |t|
+    t.string   "bunny_host"
+    t.string   "bunny_user"
+    t.string   "bunny_password"
+    t.string   "twitter_consumer_key"
+    t.string   "twitter_consumer_secret"
+    t.string   "twitter_oauth_token"
+    t.string   "twitter_oauth_token_secret"
+    t.string   "facebook_api_key"
+    t.string   "facebook_api_secret"
+    t.string   "bing_api_key"
+    t.string   "google_api_key"
+    t.datetime "created_at",                 :null => false
+    t.datetime "updated_at",                 :null => false
+    t.string   "foursquare_client_id"
+    t.string   "foursquare_client_secret"
+    t.string   "best_proxy_password"
+  end
+
   create_table "task_results", :force => true do |t|
     t.integer  "organization_id"
     t.integer  "task_id"
@@ -771,6 +790,14 @@ ActiveRecord::Schema.define(:version => 20120809060415) do
   end
 
   add_index "twitter_counts", ["twitter_url_id"], :name => "index_twitter_counts_on_twitter_url_id"
+
+  create_table "twitter_keywords", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "twitter_keywords", ["name"], :name => "index_twitter_keywords_on_name"
 
   create_table "twitter_urls", :force => true do |t|
     t.string   "url"

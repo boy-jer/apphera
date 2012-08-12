@@ -1,0 +1,24 @@
+<%= simple_form_for(@system_setting) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :bunny_host %>
+    <%= f.input :bunny_user %>
+    <%= f.input :bunny_password %>
+    <%= f.input :twitter_consumer_key %>
+    <%= f.input :twitter_consumer_secret %>
+    <%= f.input :twitter_oauth_token %>
+    <%= f.input :twitter_oauth_token_secret %>
+    <%= f.input :facebook_api_key %>
+    <%= f.input :facebook_api_secret %>
+	<%= f.input :foursquare_client_id %>
+    <%= f.input :foursquare_client_secret %>
+    <%= f.input :bing_api_key %>
+    <%= f.input :google_api_key %>
+	<%= f.input :best_proxy_password %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

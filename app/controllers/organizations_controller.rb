@@ -118,7 +118,9 @@ class OrganizationsController < ApplicationController
         @existing_org.twitter_urls << tw
       end
       @existing_org.save
-      @existing_org.get_apphera_comps
+      # Queue for backgroundprocessing
+      Resque.enqueue(AppheraGetCompetitors,@existing_org.id)
+      
 
       Schedule.create(organization_id: @existing_org.id, sequence_id: 5, name: "aggregate", in_progress: false, scheduled: "2000-01-01 00:00:00")
       respond_to do |format|
@@ -133,8 +135,8 @@ class OrganizationsController < ApplicationController
       account.organizations << @organization
       respond_to do |format|
         if @organization.save
-          @organization.get_apphera_comps
-
+          # Queue for backgroundprocessing
+          Resque.enqueue(AppheraGetCompetitors,@organization.id)
           if @organization.facebook
             fb = FacebookUrl.new(:url => @organization.facebook)
             @organization.facebook_urls << fb

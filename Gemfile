@@ -65,5 +65,10 @@ gem 'awesome_print', :group => :development
 gem 'methodfinder', :group => :development
 gem 'geocoder'
 gem 'social_media_monitoring'
+gem 'tweetstream'
+gem 'resque', :require => "resque/server"
+gem 'resque-scheduler', :require => 'resque_scheduler'
+gem 'foursquare2'
+gem 'degermatize'
 
 

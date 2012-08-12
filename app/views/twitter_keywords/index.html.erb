@@ -1,0 +1,23 @@
+<h4>Twitter Keywords</h4>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @twitter_keywords.each do |twitter_keyword| %>
+  <tr>
+    <td><%= twitter_keyword.name %></td>
+    <td><%= link_to 'Show', twitter_keyword %></td>
+    <td><%= link_to 'Edit', edit_twitter_keyword_path(twitter_keyword) %></td>
+    <td><%= link_to 'Destroy', twitter_keyword, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Twitter keyword', new_twitter_keyword_path %>

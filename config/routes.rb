@@ -1,5 +1,9 @@
 Apphera::Application.routes.draw do
 
+  resources :system_settings
+
+  resources :twitter_keywords
+
   namespace :api, defaults: {format: 'json'} do
     namespace :v1 do
       resources :sentiments
@@ -52,7 +56,10 @@ Apphera::Application.routes.draw do
 
 
   match 'resellers/setscope' => 'resellers#setscope', :as => :setscope
+  
+  mount Resque::Server, :at => "/resque"
+  end
 
 
-end
+
 

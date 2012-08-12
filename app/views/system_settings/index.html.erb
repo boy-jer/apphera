@@ -1,0 +1,50 @@
+<h3>Listing system_settings</h3>
+
+<table>
+  <tr>
+    <th>Bunny host</th>
+    <th>Bunny user</th>
+    <th>Bunny password</th>
+    <th>Twitter consumer key</th>
+    <th>Twitter consumer secret</th>
+    <th>Twitter oauth token</th>
+    <th>Twitter oauth token secret</th>
+    <th>Facebook api key</th>
+    <th>Facebook api secret</th>
+	<th>Foursquare client id</th>
+    <th>Foursquare client secret</th>
+    <th>Bing api key</th>
+    <th>Google api key</th>
+    <th>Best proxy Password</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @system_settings.each do |system_setting| %>
+  <tr>
+    <td><%= system_setting.bunny_host %></td>
+    <td><%= system_setting.bunny_user %></td>
+    <td><%= system_setting.bunny_password %></td>
+    <td><%= system_setting.twitter_consumer_key %></td>
+    <td><%= system_setting.twitter_consumer_secret %></td>
+    <td><%= system_setting.twitter_oauth_token %></td>
+    <td><%= system_setting.twitter_oauth_token_secret %></td>
+    <td><%= system_setting.facebook_api_key %></td>
+    <td><%= system_setting.facebook_api_secret %></td>
+	<td><%= system_setting.foursquare_client_id %></td>
+    <td><%= system_setting.foursquare_client_secret %></td>
+    <td><%= system_setting.bing_api_key %></td>
+    <td><%= system_setting.google_api_key %></td>
+    <td><%= system_setting.best_proxy_password %></td>
+
+    <td><%= link_to 'Show', system_setting %></td>
+    <td><%= link_to 'Edit', edit_system_setting_path(system_setting) %></td>
+    <td><%= link_to 'Destroy', system_setting, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New System setting', new_system_setting_path %>

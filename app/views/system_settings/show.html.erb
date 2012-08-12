@@ -1,0 +1,74 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Bunny host:</b>
+  <%= @system_setting.bunny_host %>
+</p>
+
+<p>
+  <b>Bunny user:</b>
+  <%= @system_setting.bunny_user %>
+</p>
+
+<p>
+  <b>Bunny password:</b>
+  <%= @system_setting.bunny_password %>
+</p>
+
+<p>
+  <b>Twitter consumer key:</b>
+  <%= @system_setting.twitter_consumer_key %>
+</p>
+
+<p>
+  <b>Twitter consumer secret:</b>
+  <%= @system_setting.twitter_consumer_secret %>
+</p>
+
+<p>
+  <b>Twitter oauth token:</b>
+  <%= @system_setting.twitter_oauth_token %>
+</p>
+
+<p>
+  <b>Twitter oauth token secret:</b>
+  <%= @system_setting.twitter_oauth_token_secret %>
+</p>
+
+<p>
+  <b>Facebook api key:</b>
+  <%= @system_setting.facebook_api_key %>
+</p>
+
+<p>
+  <b>Facebook api secret:</b>
+  <%= @system_setting.facebook_api_secret %>
+</p>
+
+<p>
+  <b>Foursquare client id:</b>
+  <%= @system_setting.foursquare_client_id %>
+</p>
+
+<p>
+  <b>Foursquare api secret:</b>
+  <%= @system_setting.foursquare_client_secret %>
+</p>
+
+<p>
+  <b>Bing api key:</b>
+  <%= @system_setting.bing_api_key %>
+</p>
+
+<p>
+  <b>Google api key:</b>
+  <%= @system_setting.google_api_key %>
+</p>
+<p>
+  <b>Bigproxy:</b>
+  <%= @system_setting.best_proxy_password %>
+</p>
+
+
+<%= link_to 'Edit', edit_system_setting_path(@system_setting) %> |
+<%= link_to 'Back', system_settings_path %>

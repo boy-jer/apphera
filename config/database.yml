@@ -1,10 +1,10 @@
-development:
+development:    
   adapter: mysql2
   encoding: utf8
   database: apphera_community_development
   pool: 5
   username: root
-  password: hallo123
+  password: 
   host: 127.0.0.1
 
 production:
@@ -13,7 +13,7 @@ production:
   database: apphera_community_production
   pool: 25 
   username: root
-  password: hallo123
+  password: 
   host: 127.0.0.1
 
 test:
@@ -22,6 +22,5 @@ test:
   database: apphera_community_test
   pool: 5
   username: root
-  password: hallo123
+  password: 
   host: 127.0.0.1
-
