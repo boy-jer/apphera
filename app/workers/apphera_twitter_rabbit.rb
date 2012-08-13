@@ -8,9 +8,10 @@ require 'rest-client'
 class AppheraTwitterRabbit
   @queue = :twitter
 
-@settings = SystemSetting.first
+
   
   def self.perform()
+    @settings = SystemSetting.first
 p Category.first.name  
 
 b = Bunny.new(:host => @settings.bunny_host, :user => @settings.bunny_user, :pass => @settings.bunny_password)

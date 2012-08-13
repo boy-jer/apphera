@@ -5,6 +5,7 @@ require 'degermatize'
 
 class ReviewWriter
   @queue = :bi
+  def self.perform()
   @settings = SystemSetting.last
   @cp = {:google_germany => 8, :kennstdueinen => 12, :tripadvisor => 7, :bing => 6, :pointoo => 13, :qype => 10, :golocal => 14, :hotels => 15, :meinestadt => 16, :restaurantkritik => 17, :wowarstdu => 18}
   b = Bunny.new(:host => @settings.bunny_host, :user => @settings.bunny_user, :pass => @settings.bunny_password)
@@ -13,7 +14,6 @@ class ReviewWriter
   q = b.queue("pending_reviews")
   ex = b.exchange("")
 
-  loop do
   item = JSON.parse(q.pop[:payload]) rescue nil
 
   if item
@@ -38,8 +38,7 @@ class ReviewWriter
 
   review.save
   end
-  sleep 1
-    end
-
+    
+end
 end
 

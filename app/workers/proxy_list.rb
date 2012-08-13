@@ -4,6 +4,7 @@
 # TODO: credentials
 class ProxyList
   @queue = :bi
+  def self.perform()
     @settings = SystemSetting.last
     theList = Net::HTTP.get_response(URI.parse("http://www.thebigproxylist.com/members/proxy-api.php?user=1108&pass=#{@settings.best_proxy_password}"))
     aFile = File.new("proxyfile.txt", "wb")
@@ -22,6 +23,6 @@ class ProxyList
             p e.inspect
             end}
     end
-  
+  end
   end
 end
