@@ -1,18 +1,18 @@
-# get_fresh_proxies:
-#   # cron: "0 0 * * *"
-#   # you can use rufus-scheduler "every" syntax in place of cron if you prefer
-#   every: 1h
-#   class: GetProxyList
-#   queue: maintanance
-#   args: 
-#   description: "Get a new proxy list"
-# 
-# 
-# apphera_master:
-#   # cron: "0 0 * * *"
-#   # you can use rufus-scheduler "every" syntax in place of cron if you prefer
-#   every: '120s' 
-#   class: AppheraMaster
-#   queue: BI
-#   args: 
-#   description: "Enqueue scheduled tasks"
+get_fresh_proxies:
+  # cron: "0 0 * * *"
+  # you can use rufus-scheduler "every" syntax in place of cron if you prefer
+  every: 1h
+  class: GetProxyList
+  queue: maintanance
+  args: 
+  description: "Get a new proxy list"
+
+
+apphera_master:
+  # cron: "0 0 * * *"
+  # you can use rufus-scheduler "every" syntax in place of cron if you prefer
+  every: '5s' 
+  class: AppheraMaster
+  queue: BI
+  args: 
+  description: "Enqueue scheduled tasks"

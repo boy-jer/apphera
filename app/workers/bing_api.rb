@@ -28,8 +28,9 @@ def self.perform()
   @settings = SystemSetting.last
   b = Bunny.new(:host => @settings.bunny_host, :user => @settings.bunny_user, :pass => @settings.bunny_password)
   b.start
-  EXCHANGE = b.exchange("")
-  QUEUE = b.queue("bing_links")
+  q = b.queue("bing_links")
+  ex = b.exchange("")
+  
    job = JSON.parse(QUEUE.pop[:payload]) rescue nil
    if job
      org_id = job["org_id"].to_i
