@@ -124,18 +124,14 @@ class OrganizationsController < ApplicationController
 
       Schedule.create(organization_id: @existing_org.id, sequence_id: 5, name: "aggregate", in_progress: false, scheduled: "2000-01-01 00:00:00")
       respond_to do |format|
-        # if current_user.reseller?
-        #           format.html { redirect_to reseller_accounts_path, notice: t(:organization_create_success) }
-        #         else
         format.html { redirect_to accounts_path, notice: t(:organization_create_success) }
-        # end
       end
     else
       @organization.apphera_id = 0 # ad the slug has to be unique I just generate a UUID here and replace later TODO: replace with GEO
       account.organizations << @organization
       respond_to do |format|
         if @organization.save
-          # Queue for backgroundprocessing
+          # Queue for background processing
           Resque.enqueue(AppheraGetCompetitors,@organization.id)
           if @organization.facebook
             fb = FacebookUrl.new(:url => @organization.facebook)
