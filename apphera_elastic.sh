@@ -1,6 +1,6 @@
 cd ~
 sudo apt-get update
-sudo apt-get install openjdk-7-jre -y
+sudo apt-get -y install openjdk-7-jre -y
 
 wget https://github.com/downloads/elasticsearch/elasticsearch/elasticsearch-0.19.0.tar.gz -O elasticsearch.tar.gz
 tar -xf elasticsearch.tar.gz
@@ -15,4 +15,3 @@ sudo /usr/local/share/elasticsearch/bin/service/elasticsearch install
 sudo ln -s `readlink -f /usr/local/share/elasticsearch/bin/service/elasticsearch` /usr/local/bin/rcelasticsearch
 
 sudo service elasticsearch start
-curl http://localhost:9200

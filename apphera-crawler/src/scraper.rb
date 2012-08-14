@@ -42,7 +42,7 @@ class Scraper
   def change_proxy
     @proxy = Proxy.new
     puts "Switching proxy to: #{@proxy.host}:#{@proxy.port}..."
-    @agent.set_proxy @proxy.host, @proxy.port
+    #@agent.set_proxy @proxy.host, @proxy.port
   end
 
   def set_job job

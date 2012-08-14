@@ -26,7 +26,7 @@ module Restaurantkritik
       end
 
       # item[:title] = 
-      @job.save item
+      p item #@job.save item
     end
   end
 
@@ -35,7 +35,6 @@ module Restaurantkritik
     company = {}
     company['phone'] = page.at('//td[.="Tel"]').next.next.text
     company['street'] = page.at('p.street-address').text.strip.gsub(/\s+/, ' ')
-    company['zip'] = page.at('span.postal-code').text
     company['city'] = page.at('span.locality').text
     company['name'] = page.at('span.fn').text.strip
     company['url'] = page.at('a.bigger[@title]')[:href] rescue nil
@@ -56,9 +55,9 @@ module Restaurantkritik
   end
 end
 
-#if __FILE__ == $0
-#  require 'pry'
-#  require_relative '../../scraper'
-#  job = Job.new('{"content_provider":"restaurantkritik", "module_type":"review", "url":"http://www.restaurant-kritik.de/1724"}')
-#  Scraper.new(job).run
-#end
+if __FILE__ == $0
+  require 'pry'
+  require_relative '../../scraper'
+  job = Job.new('{"content_provider":"restaurantkritik", "module_type":"review", "url":"http://www.restaurant-kritik.de/1724"}')
+  Scraper.new(job).run
+end

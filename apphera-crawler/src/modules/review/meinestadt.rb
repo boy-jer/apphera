@@ -9,7 +9,7 @@ module Meinestadt
     company['zip'] = page.at('span.postal-code').text
     company['city'] = page.at('span.locality').text.strip
     @job.save_company company
-
+    
     page.search('div.review_item').each do |div|
       item = {}
       item[:date] = Date.parse div.at('div.review_date span')[:title]

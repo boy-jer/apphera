@@ -21,7 +21,8 @@ module Tripadvisor
       item[:reviewer_image_url] = exp_div.at('img.avatar')[:src] rescue nil
       item[:reviewer_url] = URI.join(page.uri.to_s, "/members/#{CGI::escape(item[:reviewer_name])}").to_s rescue nil# this isn't right
     #  binding.pry unless item[:reviewer_image_url]
-      @job.save item
+      p item
+      #@job.save item
     end
   end
 
@@ -50,8 +51,8 @@ module Tripadvisor
     # can't find url or phone
     # company['url'] =
     # company['phone'] =
-    @job.save_company company
-
+   # @job.save_company company
+    p company
     do_page page
 
     @page_num = 0
@@ -68,9 +69,9 @@ module Tripadvisor
   end
 end
 
-#if __FILE__ == $0
-#  require 'pry'
-#  require_relative '../../scraper'
-#  job = Job.new('{"content_provider":"tripadvisor", "module_type":"review", "url":"http://www.tripadvisor.de/Hotel_Review-g551703-d1946007-Reviews-Woolacombe_Sands_Holiday_Park-Woolacombe_Devon_England.html"}')
-#  Scraper.new(job).run
-#end
+if __FILE__ == $0
+  require 'pry'
+  require_relative '../../scraper'
+  job = Job.new('{"content_provider":"tripadvisor", "module_type":"review", "url":"http://www.tripadvisor.de/Hotel_Review-g551703-d1946007-Reviews-Woolacombe_Sands_Holiday_Park-Woolacombe_Devon_England.html"}')
+  Scraper.new(job).run
+end

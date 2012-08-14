@@ -7,7 +7,7 @@ module Pointoo
     company['phone'] = page.at('div.address').text[/Telefon: (.*)/, 1] rescue nil
     company['url'] = page.at('div.address a')[:href] rescue nil
     company['street'], company['zip'], company['city'] = $1.strip, $2, $3 if page.at('div.address').text =~ /([^\n]+)\s*(\d{5}) ([^\n]*)/m
-    @job.save_company company
+    p company #@job.save_company company
 
     page.search('ul#text-ratings-list li').each do |li|
       item = {}
@@ -20,7 +20,7 @@ module Pointoo
       item[:reviewer_name] = li.at('img.profile-image')[:alt] rescue nil
       item[:reviewer_url] = URI.join(url, li.at('small a')[:href]).to_s rescue nil
       item[:reviewer_image_url] = URI.join(url, li.at('img.profile-image')[:src]).to_s rescue nil
-      @job.save item
+      p item #@job.save item
     end
   end
 end

@@ -3,7 +3,7 @@ require 'bunny'
 class Queue
   class EmptyQueue < RuntimeError; end
 
-  b = Bunny.new(:host => "127.0.0.1", :user => 'guest', :pass => 'guest')
+  b = Bunny.new(:host => "eu.apphera.com", :user => 'guest', :pass => 'guest')
   b.start
 
   QUEUES = {'review' => 'pending_reviews', 'competitor' => 'pending_competitors'}

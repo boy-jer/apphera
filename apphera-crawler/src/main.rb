@@ -6,8 +6,8 @@ loop do
   begin
     @scraper.set_job Job.new
     @scraper.run
-  rescue Job::EmptyQueue => e
-   # puts 'The queue is empty.'
+  rescue => e #Job::EmptyQueue => e
+    puts 'The queue is empty.' + e.inspect
 
   end
   sleep 5

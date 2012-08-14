@@ -11,7 +11,7 @@ get_fresh_proxies:
 apphera_master:
   # cron: "0 0 * * *"
   # you can use rufus-scheduler "every" syntax in place of cron if you prefer
-  every: '5s' 
+  every: '5srcs' 
   class: AppheraMaster
   queue: BI
   args: 

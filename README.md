@@ -18,18 +18,11 @@ Apphera is a complete platform, covering the full range of activities you need t
 * Youtube tracking
 
 ## Installation
+1. Install a really fresh Ubuntu 12.04 LTS. If you would like to use any other Linux you should be successful too but almost none of our install  
+scripts will work
+2. scp apphera_ubuntu.sh root@YOURSERVER.COM:/home/
+3. Log into your server, and chmod +x the apphera_ubuntu.sh script and run it ./apphera_ubuntu.sh 
 
-1. Clone the project    
-`git clone https://github.com/nikoma/apphera.git`  
-2. Install Elasticsearch and start up a local instance like    
-`elasticsearch -f -D es.config=/usr/local/Cellar/elasticsearch/0.17.7/config/elasticsearch.yml`  
-3. switch to the apphera folder on your harddrive  
-`cd apphera`  
-4. Run the init script.  
-`./apphera_setup`  
-In case it is not executable for you please enter:  
-`chmod +x apphera_setup.sh`  
-and try again to issue `./apphera_setup`
 
 The installer expects the database to be on the same server as we tried to make the application as lean as possible. It would normally be installed on at least 5 servers.  
 
