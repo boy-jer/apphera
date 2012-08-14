@@ -1,7 +1,9 @@
 # Apphera
 ## The open source Internet, social media monitoring and social engagement platform
 
-Apphera is a complete platform, covering the full range of activities you need to cover when planning any kind of online success.
+Apphera is a complete platform, covering the full range of activities you need to cover when planning any kind of social media monitoring, social engagement platform, reputation management or SEO related activities. 
+
+This is the "community" edition which contains basically most of the main component but we have paid much attention to the fact that you might not want to roll it out on 10+ servers but ideally on one machine. 
 
 ### Features
 
@@ -16,15 +18,69 @@ Apphera is a complete platform, covering the full range of activities you need t
 * Influencer identification 
 * Tracking of Foursquare activity
 * Youtube tracking
+* 50+ SEO tasks
 
 ## Installation
-1. Install a really fresh Ubuntu 12.04 LTS. If you would like to use any other Linux you should be successful too but almost none of our install  
-scripts will work
-2. scp apphera_ubuntu.sh root@YOURSERVER.COM:/home/
-3. Log into your server, and chmod +x the apphera_ubuntu.sh script and run it ./apphera_ubuntu.sh 
+This solution has been tested EXTENSIVELY with Ubuntu 12.04 LTS. I feel it is a great choice for a Linux platform and developing and testing on one platform let's us find issues way faster than dealing with countless pitfalls. Never less it should run fine on CentOS and other platforms as well. 
+
+### Step 1   
+The first step to get going is to copy the initial install script on your machine. For simplicity let's just use SCP  
+`scp apphera_ubuntu.sh root@YOURSERVER.COM:/home/`
+
+### Step 2
+Ssh into your server, and chmod +x the apphera_ubuntu.sh script and execute it ./apphera_ubuntu.sh 
+
+### Step 3
+a)  
+Edit the /etc/apt/sources.list file and add at the end:  `deb http://www.rabbitmq.com/debian/ testing main`  
+b)  
+`sudo wget http://www.rabbitmq.com/rabbitmq-signing-key-public.asc`  
+c)  
+`sudo apt-key add rabbitmq-signing-key-public.asc`
+d)  
+`apt-get update`
+e) 
+`sudo apt-get install rabbitmq-server`  
+f)  
+`sudo rabbitmq-plugins enable rabbitmq_management`
+g)  
+cd into the apphera home directory which should be at /home/deployer/apphera
+`chmod +x apphera_elastic.sh`  
+h)  
+`./apphera_elastic.sh`  
+i)  
+`chmod +x apphera_setup.sh`  
+k)  
+`./apphera_setup.sh`
+
+You are all done! Now you should check if all services are installed correctly:
+
+`sudo service elasticsearch restart`  
+`sudo service redis-server restart`  
+`sudo service rabbitmq-server restart`  
+
+If that all succeeds you need to start a background worker. For production environment they will be running in the background. For now I recommend to just run them ( 2 or 3 as) - For this you must be in the home dir! /home/deployer/apphera
+
+`QUEUE=* rake resque:work &`  
+
+You are ready to give it a shot. In production you want to use unicorn with nginx or other webserver but for now webrick will do:
+When in the home directory type  
+
+`rails s`  
+You should now see the webserver starting up. 
+
+at http://YOURSERVER:3000   you can see the website with signup etc.  
+at http://eu.apphera.com:55672  You see the message queue server which is password protected for right now just as test/test
+at http://YOUSERVER:3000/resque You will see your background workers. If it shows 0 workers you have not started the workers yet (`QUEUE=* rake resque:work &`)
+
+Now you can go ahead and find out what the world of social media thinks about you and your competitors. Have fun!
 
 
-The installer expects the database to be on the same server as we tried to make the application as lean as possible. It would normally be installed on at least 5 servers.  
+
+
+
+
+#### Some things to know about installation
 
 If you don't want to run the automated init scripts or want to use a different database you can do the following:  
 
