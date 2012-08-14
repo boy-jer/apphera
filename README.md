@@ -36,13 +36,13 @@ Edit the /etc/apt/sources.list file and add at the end:  `deb http://www.rabbitm
 b)  
 `sudo wget http://www.rabbitmq.com/rabbitmq-signing-key-public.asc`  
 c)  
-`sudo apt-key add rabbitmq-signing-key-public.asc`
+`sudo apt-key add rabbitmq-signing-key-public.asc`  
 d)  
-`apt-get update`
+`apt-get update`  
 e) 
 `sudo apt-get install rabbitmq-server`  
 f)  
-`sudo rabbitmq-plugins enable rabbitmq_management`
+`sudo rabbitmq-plugins enable rabbitmq_management`  
 g)  
 cd into the apphera home directory which should be at /home/deployer/apphera
 `chmod +x apphera_elastic.sh`  
@@ -50,7 +50,7 @@ h)
 `./apphera_elastic.sh`  
 i)  
 `chmod +x apphera_setup.sh`  
-k)  
+j)  
 `./apphera_setup.sh`
 
 You are all done! Now you should check if all services are installed correctly:
